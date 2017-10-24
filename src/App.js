@@ -53,8 +53,9 @@ class App extends Component {
     }
 
     let coverPage
-    console.log(this.state.assumptions)
+    let watermark
     if (this.state.assumptions.template === 'dream forward') {
+      watermark = <img className='watermark' src={dfWatermark} alt='dream forward logo' />
       coverPage = <div className='page'>
         <div className='coverPage'>
           <img className='watermark' src={dfWatermark} alt='dream forward logo' />
@@ -82,7 +83,7 @@ class App extends Component {
     let profitSharing
     if (this.state.assumptions.profitSharing) {
       profitSharing = <div className='page'>
-        <img className='watermark' src={dfWatermark} alt='dream forward logo' />
+        {watermark}
         <Specification
           users={this.state.users}
           assumptions={this.state.assumptions}
@@ -97,7 +98,7 @@ class App extends Component {
     let safeHarbor
     if (this.state.assumptions.safeHarborPercent) {
       safeHarbor = <div className='page'>
-        <img className='watermark' src={dfWatermark} alt='dream forward logo' />
+        {watermark}
         <Specification
           users={this.state.users}
           assumptions={this.state.assumptions}
@@ -112,15 +113,15 @@ class App extends Component {
       <div className={`main ${className}`}>
         {coverPage}
         <div className='page'>
-          <img className='watermark' src={dfWatermark} alt='dream forward logo' />
+          {watermark}
           <Overview users={this.state.users} assumptions={this.state.assumptions} />
         </div>
         <div className='page'>
-          <img className='watermark' src={dfWatermark} alt='dream forward logo' />
+          {watermark}
           <Employees users={this.state.users} assumptions={this.state.assumptions} />
         </div>
         <div className='page'>
-          <img className='watermark' src={dfWatermark} alt='dream forward logo' />
+          {watermark}
           <Specification
             users={this.state.users}
             assumptions={this.state.assumptions}
