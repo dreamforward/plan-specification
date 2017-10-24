@@ -46,7 +46,7 @@ dd ul {
 
 .userName {
   white-space: nowrap;
-  max-width: 120px;
+  width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
