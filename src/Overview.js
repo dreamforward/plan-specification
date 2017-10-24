@@ -92,7 +92,7 @@ class Overview extends Component {
         <dt>Employer Contributions:</dt>
         <dd>
           <ul>
-            <li>No Match: $0.0</li>
+            <li>No Match: $0</li>
             {standardMatch}
             {profitSharing}
           </ul>

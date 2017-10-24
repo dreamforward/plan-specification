@@ -2,7 +2,7 @@
   font-family: 'roboto', sans-serif;
 }
 .coverPage .logo{
-  margin-top: 200px;
+  margin-top: 20px;
 }
 .coverPage h1{
   text-align: left;
@@ -81,6 +81,9 @@ small {
   margin: 0;
 }
 @media print {
+  .coverPage .logo{
+    margin-top: 200px;
+  }
   .watermark{
     position: absolute;
     display: block;
