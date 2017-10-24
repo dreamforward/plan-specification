@@ -57,7 +57,7 @@ class Overview extends Component {
         <dd>
           <ul>
             <li>
-              Employee 401k contribution rates: {this.props.assumptions.employeeDeferral}%
+              Employee 401(k) contribution rates: {this.props.assumptions.employeeDeferral}%
             </li>
             <li>
               Employer match (for relevant plans): {this.props.assumptions.employerMatch}%
@@ -80,11 +80,11 @@ class Overview extends Component {
             <li>Participants enter the plan the 1st day of the month after establishing eligibility.</li>
           </ul>
         </dd>
-        <dt>Vesting Schedule</dt>
+        <dt>Vesting Schedule:</dt>
         <dd>
           <ul>
-            <li>Roth 401k: {this.props.assumptions.rothVestingMonths || 'Immediate'}</li>
-            <li>Traditional 401k: {this.props.assumptions.traditionalVestingMonths || 'Immediate'}</li>
+            <li>Roth 401(k): {this.props.assumptions.rothVestingMonths || 'Immediate'}</li>
+            <li>Traditional 401(k): {this.props.assumptions.traditionalVestingMonths || 'Immediate'}</li>
           </ul>
         </dd>
         <dt>Deferral Contributions:</dt>

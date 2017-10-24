@@ -64,19 +64,19 @@ class Specification extends Component {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Compensation</th>
-            <th>Employee Deferral</th>
-            <th>Employer Contribution</th>
-            <th>Employer Match</th>
-            <th>Profit Sharing</th>
-            <th>Catch-up Contribution</th>
+            <th>Comp.</th>
+            <th>Employee<br />Deferral</th>
+            <th>Employer<br />Contrib.</th>
+            <th>Employer<br />Match</th>
+            <th>Profit<br />Sharing</th>
+            <th>Catch-up<br />Contrib.</th>
             <th>Total</th>
           </tr>
         </thead>
         <tbody>
           {processed.map((user, idx) => {
             return <tr key={idx}>
-              <td className='nowrap'>{user.name}</td>
+              <td className='userName'>{user.name}</td>
               <td className='money'>{getMoneyDisplay(user.salary)}</td>
               <td className='money'>{getMoneyDisplay(user.deferral)}</td>
               <td className='money'>{getMoneyDisplay(user.employerContrib)}</td>
@@ -112,7 +112,7 @@ class Specification extends Component {
       </dl>
       <small>*Tax savings are for illustrative purposes only</small>
       <br />
-      <small>**Administrative fees are projected based on current data and should not be considered final till time of contracting</small>
+      <small>**Administrative fees are projected based on current data and should not be considered final until time of contracting</small>
     </div>
   }
 }

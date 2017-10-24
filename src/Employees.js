@@ -15,6 +15,13 @@ class Employees extends Component {
         return val
       }, 0)
     }
+    const formatDate = (date) => {
+      const momentDate = moment(date, 'M/D/YYYY')
+      if (momentDate.isValid()) {
+        return momentDate.format('M/D/YY')
+      }
+      return date
+    }
     return <div>
       <h1>Employees</h1>
       <table className='table table-hover table-bordered'>
@@ -33,10 +40,10 @@ class Employees extends Component {
           {this.props.users.map((user, idx) => {
             return <tr key={idx}>
               <td>{user.First} {user.Last}</td>
-              <td>{moment(user.DOB, 'M/D/YYYY').format('M/D/YY')}</td>
+              <td>{formatDate(user.DOB)}</td>
               <td>{getAge(user)}</td>
-              <td>{moment(user.DOH, 'M/D/YYYY').format('M/D/YY')}</td>
-              <td>{moment(user.DOE, 'M/D/YYYY').format('M/D/YY')}</td>
+              <td>{formatDate(user.DOH)}</td>
+              <td>{formatDate(user.DOE)}</td>
               <td className='money'>{getMoneyDisplay(user.Salary)}</td>
               <td>{getEligibility(user, this.props.assumptions) ? 'Eligible' : 'NOT Eligible'}</td>
             </tr>
@@ -48,7 +55,7 @@ class Employees extends Component {
         <dd>{this.props.users.length}</dd>
         <dt>Eligible Employees:</dt>
         <dd>{eligibleUsers.length}</dd>
-        <dt>Total Comp:</dt>
+        <dt>Total Compensation:</dt>
         <dd>{getMoneyDisplay(getTotalSalary(this.props.users))}</dd>
         <dt>Eligible Compensation:</dt>
         <dd>{getMoneyDisplay(getTotalSalary(eligibleUsers))}</dd>

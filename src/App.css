@@ -44,8 +44,11 @@ dd ul {
   list-style: none;
 }
 
-.nowrap {
+.userName {
   white-space: nowrap;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 small {
   color: rgb(155,155,155);
