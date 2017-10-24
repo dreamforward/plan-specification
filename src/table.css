@@ -30,8 +30,8 @@
   transition: all 0.3s ease;
 }
 .table > thead > tr > th {
-  font-weight: 400;
-  color: #757575;
+  color: #000000;
+  font-weight: bold;
   vertical-align: bottom;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
