@@ -1,17 +1,27 @@
-@media print {
-  .page {
-    page-break-before: always;
-  }
-}
 * {
   font-family: 'roboto', sans-serif;
 }
+.coverPage .logo{
+  margin-top: 200px;
+}
+.coverPage h1{
+  text-align: left;
+  font-size: 50px;
+  margin-left: 100px;
+}
+
 .main {
   width: 800px;
   margin: 0 auto;
 }
 dl {
-  font-size: 18px;
+  font-size: 16px;
+}
+dl.overview {
+  font-size: 20px;
+}
+dl.overview dd {
+  margin-bottom: 25px;
 }
 dt, dd{
   display: inline-block;
@@ -40,4 +50,48 @@ dd ul {
 small {
   color: rgb(155,155,155);
   size: 10px;
+}
+.money {
+  text-align: right !important;
+}
+.page:first-child {
+  border-top: none;
+}
+.page {
+  margin-bottom: 30px;
+  border-top: 5px solid black;
+  position: relative;
+  overflow: hidden;
+}
+.watermark {
+  position: fixed;
+  top: -340px;
+  left: -420px;
+  height: 1340px;
+  opacity: 0.05;
+  display: none;
+}
+.main .page:first-child .watermark {
+  display: block;
+}
+@page {
+  margin: 0;
+}
+@media print {
+  .watermark{
+    position: absolute;
+    display: block;
+  }
+  .page {
+    page-break-before: always;
+    border-top: none;
+    min-height: calc(100vh - 40px);
+    padding: 20px 20px;
+  }
+  .showHeader thead {
+    display: table-header-group;
+  }
+  thead {
+    display: table-row-group;
+  }
 }

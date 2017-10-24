@@ -48,7 +48,7 @@ class Overview extends Component {
     return <div>
       <h1>Plan Specifications
       </h1>
-      <dl>
+      <dl className='overview'>
         <dt>Effective Date (for model):</dt>
         <dd>{moment(this.props.assumptions.effectiveDate, 'M/D/YYYY').format('MMM Do, YYYY')}</dd>
         <dt>Normal Retirement Age:</dt>

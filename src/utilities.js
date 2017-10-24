@@ -3,7 +3,7 @@ import accounting from 'accounting'
 
 export const getMoneyDisplay = (amount) => {
   if (!amount) {
-    return '$-'
+    return '-'
   }
   if (typeof amount !== 'number') {
     return amount
@@ -72,7 +72,7 @@ export const getAge = (user) => {
   if (!age.isValid()) {
     return 'N/A'
   }
-  return age.format('M/D/YYYY')
+  return moment().diff(age, 'years')
 }
 
 export const getEligibility = (user, assumptions) => {

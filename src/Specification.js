@@ -33,7 +33,7 @@ class Specification extends Component {
           assumptions: this.props.assumptions
         }),
         eligibility: getEligibility(user, this.props.assumptions) ? 'Eligible' : 'NOT Eligible',
-        catchUp: user.CatchUp || '-',
+        catchUp: user.CatchUp,
         total: getTotal(user, {
           match: this.props.match,
           profitSharing: this.props.profitSharing,
@@ -77,24 +77,24 @@ class Specification extends Component {
           {processed.map((user, idx) => {
             return <tr key={idx}>
               <td className='nowrap'>{user.name}</td>
-              <td>{getMoneyDisplay(user.salary)}</td>
-              <td>{getMoneyDisplay(user.deferral)}</td>
-              <td>{getMoneyDisplay(user.employerContrib)}</td>
-              <td>{getMoneyDisplay(user.employerMatch)}</td>
-              <td>{getMoneyDisplay(user.profitSharing)}</td>
-              <td>{getMoneyDisplay(user.catchUp)}</td>
-              <td>{getMoneyDisplay(user.total)}</td>
+              <td className='money'>{getMoneyDisplay(user.salary)}</td>
+              <td className='money'>{getMoneyDisplay(user.deferral)}</td>
+              <td className='money'>{getMoneyDisplay(user.employerContrib)}</td>
+              <td className='money'>{getMoneyDisplay(user.employerMatch)}</td>
+              <td className='money'>{getMoneyDisplay(user.profitSharing)}</td>
+              <td className='money'>{getMoneyDisplay(user.catchUp)}</td>
+              <td className='money'>{getMoneyDisplay(user.total)}</td>
             </tr>
           })}
           <tr className='totals'>
             <th>Totals</th>
-            <th>{getMoneyDisplay(summation('salary'))}</th>
-            <th>{getMoneyDisplay(summation('deferral'))}</th>
-            <th>{getMoneyDisplay(summation('employerContrib'))}</th>
-            <th>{getMoneyDisplay(summation('employerMatch'))}</th>
-            <th>{getMoneyDisplay(summation('profitSharing'))}</th>
-            <th>{getMoneyDisplay(summation('catchUp'))}</th>
-            <th>{getMoneyDisplay(summation('total'))}</th>
+            <th className='money'>{getMoneyDisplay(summation('salary'))}</th>
+            <th className='money'>{getMoneyDisplay(summation('deferral'))}</th>
+            <th className='money'>{getMoneyDisplay(summation('employerContrib'))}</th>
+            <th className='money'>{getMoneyDisplay(summation('employerMatch'))}</th>
+            <th className='money'>{getMoneyDisplay(summation('profitSharing'))}</th>
+            <th className='money'>{getMoneyDisplay(summation('catchUp'))}</th>
+            <th className='money'>{getMoneyDisplay(summation('total'))}</th>
           </tr>
         </tbody>
       </table>
@@ -104,9 +104,9 @@ class Specification extends Component {
         <dt>Gross Outlay by employer:</dt>
         <dd>{getMoneyDisplay(grossOutlayByEmployer)}</dd>
         <dt>Less Tax Savings:</dt>
-        <dd>{getMoneyDisplay(lessTaxSavings)}*</dd>
+        <dd>{getMoneyDisplay(lessTaxSavings)}<small>*</small></dd>
         <dt>Annual Administrative Fee:</dt>
-        <dd>{getMoneyDisplay(adminFee)}**</dd>
+        <dd>{getMoneyDisplay(adminFee)}<small>**</small></dd>
         <dt>Total Cost:</dt>
         <dd>{getMoneyDisplay(total)}</dd>
       </dl>

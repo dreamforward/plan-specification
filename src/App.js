@@ -4,6 +4,8 @@ import parser from 'papaparse'
 import Overview from './Overview'
 import Employees from './Employees'
 import Specification from './Specification'
+import dfLogo from './images/df-horizontal.svg'
+import dfWatermark from './images/df-watermark.svg'
 
 class App extends Component {
   constructor () {
@@ -37,7 +39,7 @@ class App extends Component {
     if (!this.state.users.length) {
       let helper
       if (process.env.NODE_ENV !== 'production') {
-        helper = <a href='/?i=eyJjc3YiOiJMYXN0LEZpcnN0LERPQixET0gsRE9FLFNhbGFyeSxEZWZlcnJhbCxDYXRjaFVwXG5XZWxscyxEb3VnLE4vQSxPV05FUixOL0EsTi9BLDE4MDAwLDYwMDBcbldoaXRlaGVhZCxKYXNvbixOL0EsT1dORVIsTi9BLE4vQSwxODAwMCw2MDAwXG5CYXVsaXN0YSxFZGdvciwzLzE0LzgwLDMvMjAvMTcsOS8xNi8xNyw0MzY4MFxuSmFjb2JzLFJheW11bmRvLDYvMjAvODIsMy8yMC8xNyw5LzE2LzE3LDQzNjgwXG5CYXNzLEplcmVteSwyLzE2LzkxLDgvMjQvMTYsMi8yMC8xNyw0MTYwMFxuUGFya2VyLEJhcnJldHQsMTAvMTAvODgsNS8yMS8xMywxMS8xNy8xMyw0MTYwMFxuTmV3Y29tYixEYWxlLDUvMTYvNjUsMTIvMTQvMTQsNi8xMi8xNSwzOTUyMFxuVGF5bG9yLEdlbmUsMS81LzY0LDEwLzMxLzE0LDQvMjkvMTUsMzk1MjBcbkpvaG5zb24sUkcsMTAvMjMvODksMy8yNC8xNyw5LzIwLzE3LDM4NDgwXG5QZXJhbGVzLEpvc2UsMy82Lzg5LDEwLzI5LzE1LDQvMjYvMTYsMzc0NDBcblBlcmFsZXMsVmFsZW50aW4sNS8yMi84MSw3LzIzLzE1LDEvMTkvMTYsMzc0NDBcblJpbGV5LExpc2EsNi8xOC82Nyw1LzEvMTMsMTAvMjgvMTMsMzUzNjBcbk1lZGluYSxSaWNreSw3LzEzLzg5LDEyLzE2LzE2LDYvMTQvMTcsMzMyODBcblNhbGF6b3IsTWVsZXNpbyw1LzIyLzgwLDkvMTYvMTUsMy8xNC8xNiwzMzI4MFxuV2lsbGlhbXMsVGVycnksOC8xNy83MCw2LzE1LzE1LDEyLzEyLzE1LDMzMjgwXG5FZHdhcmRzLER1c3Rpbiw2LzgvOTQsMS8yMy8xNCw3LzIyLzE0LDMxMjAwXG5XZWxscyxNYXR0LDgvMTAvOTYsMi8xNS8xNiw4LzEzLzE2LDMxMjAwXG5KdXJnb3ZhbixXaWxsaWFtLDcvMjcvOTAsOC8yNC8xNiwyLzIwLzE3LDI5MTIwXG5NYW5uaW5nLEJ1Y2ssNC84LzgxLDMvMTcvMTcsOS8xMy8xNywyNzA0MFxuIiwiYXNzdW1wdGlvbnMiOnsiYnVzaW5lc3NUeXBlIjoiQy1Db3JwIiwiZWZmZWN0aXZlRGF0ZSI6IjAxLzAxLzIwMTgiLCJ0ZW1wbGF0ZSI6ImRyZWFtIGZvcndhcmQiLCJyZXRpcmVtZW50QWdlIjo2NywibWluaW11bU1vbnRoc09mU2VydmljZSI6NiwidHJhZGl0aW9uYWxWZXN0aW5nTW9udGhzIjowLCJyb3RoVmVzdGluZ01vbnRocyI6MCwibWluaW11bUFnZSI6MjEsImVtcGxveWVlRGVmZXJyYWwiOjAuMDUsImVtcGxveWVyQ29udHJpYnV0aW9uIjowLjAzLCJlbXBsb3llck1hdGNoIjowLjAzLCJwcm9maXRTaGFyaW5nIjoxMDAwLCJhZG1pbkZlZSI6MjUwMCwicGVyRW1wbG95ZWVGZWUiOjM2LCJmZWVBZ2FpbnN0UGxhbkFzc2V0cyI6NzUsImVtcGxveWVyVGF4UGVyY2VudCI6MC4yNX19'>LINKY</a>
+        helper = <a href='/?i=eyJjc3YiOiJMYXN0LEZpcnN0LERPQixET0gsRE9FLFNhbGFyeSxEZWZlcnJhbCxDYXRjaFVwXG5XZWxscyxEb3VnLE4vQSxPV05FUixOL0EsTi9BLDE4MDAwLDYwMDBcbldoaXRlaGVhZCxKYXNvbixOL0EsT1dORVIsTi9BLE4vQSwxODAwMCw2MDAwXG5CYXVsaXN0YSxFZGdvciwzLzE0LzE5ODAsMy8yMC8yMDE3LDkvMTYvMjAxNyw0MzY4MFxuSmFjb2JzLFJheW11bmRvLDYvMjAvMTk4MiwzLzIwLzIwMTcsOS8xNi8yMDE3LDQzNjgwXG5CYXNzLEplcmVteSwyLzE2LzE5OTEsOC8yNC8yMDE2LDIvMjAvMjAxNyw0MTYwMFxuUGFya2VyLEJhcnJldHQsMTAvMTAvMTk4OCw1LzIxLzIwMTMsMTEvMTcvMjAxMyw0MTYwMFxuTmV3Y29tYixEYWxlLDUvMTYvMTk2NSwxMi8xNC8yMDE0LDYvMTIvMjAxNSwzOTUyMFxuVGF5bG9yLEdlbmUsMS81LzE5NjQsMTAvMzEvMjAxNCw0LzI5LzIwMTUsMzk1MjBcbkpvaG5zb24sUkcsMTAvMjMvMTk4OSwzLzI0LzIwMTcsOS8yMC8yMDE3LDM4NDgwXG5QZXJhbGVzLEpvc2UsMy82LzE5ODksMTAvMjkvMjAxNSw0LzI2LzIwMTYsMzc0NDBcblBlcmFsZXMsVmFsZW50aW4sNS8yMi8xOTgxLDcvMjMvMjAxNSwxLzE5LzIwMTYsMzc0NDBcblJpbGV5LExpc2EsNi8xOC8xOTY3LDUvMS8yMDEzLDEwLzI4LzIwMTMsMzUzNjBcbk1lZGluYSxSaWNreSw3LzEzLzE5ODksMTIvMTYvMjAxNiw2LzE0LzIwMTcsMzMyODBcblNhbGF6b3IsTWVsZXNpbyw1LzIyLzE5ODAsOS8xNi8yMDE1LDMvMTQvMjAxNiwzMzI4MFxuV2lsbGlhbXMsVGVycnksOC8xNy8xOTcwLDYvMTUvMjAxNSwxMi8xMi8yMDE1LDMzMjgwXG5FZHdhcmRzLER1c3Rpbiw2LzgvMTk5NCwxLzIzLzIwMTQsNy8yMi8yMDE0LDMxMjAwXG5XZWxscyxNYXR0LDgvMTAvMTk5NiwyLzE1LzIwMTYsOC8xMy8yMDE2LDMxMjAwXG5KdXJnb3ZhbixXaWxsaWFtLDcvMjcvMTk5MCw4LzI0LzIwMTYsMi8yMC8yMDE3LDI5MTIwXG5NYW5uaW5nLEJ1Y2ssNC84LzE5ODEsMy8xNy8yMDE3LDkvMTMvMjAxNywyNzA0MFxuIiwiYXNzdW1wdGlvbnMiOnsiYnVzaW5lc3NUeXBlIjoiQy1Db3JwIiwiZWZmZWN0aXZlRGF0ZSI6IjAxLzAxLzIwMTgiLCJ0ZW1wbGF0ZSI6ImRyZWFtIGZvcndhcmQiLCJyZXRpcmVtZW50QWdlIjo2NywibWluaW11bU1vbnRoc09mU2VydmljZSI6NiwidHJhZGl0aW9uYWxWZXN0aW5nTW9udGhzIjowLCJyb3RoVmVzdGluZ01vbnRocyI6MCwibWluaW11bUFnZSI6MjEsImVtcGxveWVlRGVmZXJyYWwiOjAuMDUsImVtcGxveWVyQ29udHJpYnV0aW9uIjowLjAzLCJlbXBsb3llck1hdGNoIjowLjAzLCJwcm9maXRTaGFyaW5nIjoxMDAwLCJhZG1pbkZlZSI6MjUwMCwicGVyRW1wbG95ZWVGZWUiOjM2LCJmZWVBZ2FpbnN0UGxhbkFzc2V0cyI6NzUsImVtcGxveWVyVGF4UGVyY2VudCI6MC4yNX19'>LINKY</a>
       }
       return <div>
         Your link is invalid. Please make sure you've copied it in it's entirety properly.
@@ -45,50 +47,80 @@ class App extends Component {
       </div>
     }
 
+    let className = 'showHeader'
+    if (this.state.users.length <= 26) {
+      className = ''
+    }
+
+    let coverPage
+    console.log(this.state.assumptions)
+    if (this.state.assumptions.template === 'dream forward') {
+      coverPage = <div className='page'>
+        <div className='coverPage'>
+          <img className='watermark' src={dfWatermark} alt='dream forward logo' />
+          <img className='logo' src={dfLogo} alt='dream forward logo' />
+          <h1>401(k) Plan Design</h1>
+        </div>
+      </div>
+    }
+
     let employerMatch
     if (this.state.assumptions.employerMatch) {
-      employerMatch = <Specification
-        users={this.state.users}
-        assumptions={this.state.assumptions}
-        title='Employer Match'
-        match={this.state.assumptions.employerMatch}
-        profitSharing={0}
-        safeHarbor={0}
-      />
+      employerMatch = <div className='page'>
+        <img className='watermark' src={dfWatermark} alt='dream forward logo' />
+        <Specification
+          users={this.state.users}
+          assumptions={this.state.assumptions}
+          title='Employer Match'
+          match={this.state.assumptions.employerMatch}
+          profitSharing={0}
+          safeHarbor={0}
+        />
+      </div>
     }
 
     let profitSharing
     if (this.state.assumptions.profitSharing) {
-      profitSharing = <Specification
-        users={this.state.users}
-        assumptions={this.state.assumptions}
-        title='Profit Sharing'
-        match={0}
-        profitSharing={this.state.assumptions.profitSharing}
-        safeHarbor={0}
-      />
+      profitSharing = <div className='page'>
+        <img className='watermark' src={dfWatermark} alt='dream forward logo' />
+        <Specification
+          users={this.state.users}
+          assumptions={this.state.assumptions}
+          title='Profit Sharing'
+          match={0}
+          profitSharing={this.state.assumptions.profitSharing}
+          safeHarbor={0}
+        />
+      </div>
     }
 
     let safeHarbor
     if (this.state.assumptions.safeHarborPercent) {
-      safeHarbor = <Specification
-        users={this.state.users}
-        assumptions={this.state.assumptions}
-        title='Safe Harbor'
-        match={0}
-        profitSharing={0}
-        safeHarbor={this.state.assumptions.safeHarborPercent}
-      />
+      safeHarbor = <div className='page'>
+        <img className='watermark' src={dfWatermark} alt='dream forward logo' />
+        <Specification
+          users={this.state.users}
+          assumptions={this.state.assumptions}
+          title='Safe Harbor'
+          match={0}
+          profitSharing={0}
+          safeHarbor={this.state.assumptions.safeHarborPercent}
+        />
+      </div>
     }
     return (
-      <div className='main'>
+      <div className={`main ${className}`}>
+        {coverPage}
         <div className='page'>
+          <img className='watermark' src={dfWatermark} alt='dream forward logo' />
           <Overview users={this.state.users} assumptions={this.state.assumptions} />
         </div>
         <div className='page'>
+          <img className='watermark' src={dfWatermark} alt='dream forward logo' />
           <Employees users={this.state.users} assumptions={this.state.assumptions} />
         </div>
         <div className='page'>
+          <img className='watermark' src={dfWatermark} alt='dream forward logo' />
           <Specification
             users={this.state.users}
             assumptions={this.state.assumptions}
@@ -98,15 +130,9 @@ class App extends Component {
             safeHarbor={0}
           />
         </div>
-        <div className='page'>
-          {employerMatch}
-        </div>
-        <div className='page'>
-          {profitSharing}
-        </div>
-        <div className='page'>
-          {safeHarbor}
-        </div>
+        {employerMatch}
+        {profitSharing}
+        {safeHarbor}
       </div>
     )
   }

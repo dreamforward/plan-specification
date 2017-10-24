@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { getAge, getEligibility } from './utilities'
+import { getAge, getEligibility, getMoneyDisplay } from './utilities'
+import moment from 'moment'
 
 class Employees extends Component {
   render () {
@@ -32,25 +33,25 @@ class Employees extends Component {
           {this.props.users.map((user, idx) => {
             return <tr key={idx}>
               <td>{user.First} {user.Last}</td>
-              <td>{user.DOB}</td>
+              <td>{moment(user.DOB, 'M/D/YYYY').format('M/D/YY')}</td>
               <td>{getAge(user)}</td>
-              <td>{user.DOH}</td>
-              <td>{user.DOE}</td>
-              <td>{user.Salary}</td>
+              <td>{moment(user.DOH, 'M/D/YYYY').format('M/D/YY')}</td>
+              <td>{moment(user.DOE, 'M/D/YYYY').format('M/D/YY')}</td>
+              <td className='money'>{getMoneyDisplay(user.Salary)}</td>
               <td>{getEligibility(user, this.props.assumptions) ? 'Eligible' : 'NOT Eligible'}</td>
             </tr>
           })}
         </tbody>
       </table>
       <dl>
-        <dt>Total Employees</dt>
+        <dt>Total Employees:</dt>
         <dd>{this.props.users.length}</dd>
-        <dt>Eligible Employees</dt>
+        <dt>Eligible Employees:</dt>
         <dd>{eligibleUsers.length}</dd>
-        <dt>Total Comp</dt>
-        <dd>{getTotalSalary(this.props.users)}</dd>
-        <dt>Eligible Compensation</dt>
-        <dd>{getTotalSalary(eligibleUsers)}</dd>
+        <dt>Total Comp:</dt>
+        <dd>{getMoneyDisplay(getTotalSalary(this.props.users))}</dd>
+        <dt>Eligible Compensation:</dt>
+        <dd>{getMoneyDisplay(getTotalSalary(eligibleUsers))}</dd>
       </dl>
     </div>
   }
