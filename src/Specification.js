@@ -8,6 +8,7 @@ import {
   getTotal,
   getMoneyDisplay
 } from './utilities'
+import './table.css'
 
 class Specification extends Component {
   render () {
@@ -59,7 +60,7 @@ class Specification extends Component {
 
     return <div>
       <h1>Plan Specifications - {this.props.title}</h1>
-      <table>
+      <table className='table table-hover table-bordered'>
         <thead>
           <tr>
             <th>Name</th>
@@ -75,7 +76,7 @@ class Specification extends Component {
         <tbody>
           {processed.map((user, idx) => {
             return <tr key={idx}>
-              <td>{user.name}</td>
+              <td className='nowrap'>{user.name}</td>
               <td>{getMoneyDisplay(user.salary)}</td>
               <td>{getMoneyDisplay(user.deferral)}</td>
               <td>{getMoneyDisplay(user.employerContrib)}</td>
@@ -86,27 +87,27 @@ class Specification extends Component {
             </tr>
           })}
           <tr className='totals'>
-            <td>Totals</td>
-            <td>{getMoneyDisplay(summation('salary'))}</td>
-            <td>{getMoneyDisplay(summation('deferral'))}</td>
-            <td>{getMoneyDisplay(summation('employerContrib'))}</td>
-            <td>{getMoneyDisplay(summation('employerMatch'))}</td>
-            <td>{getMoneyDisplay(summation('profitSharing'))}</td>
-            <td>{getMoneyDisplay(summation('catchUp'))}</td>
-            <td>{getMoneyDisplay(summation('total'))}</td>
+            <th>Totals</th>
+            <th>{getMoneyDisplay(summation('salary'))}</th>
+            <th>{getMoneyDisplay(summation('deferral'))}</th>
+            <th>{getMoneyDisplay(summation('employerContrib'))}</th>
+            <th>{getMoneyDisplay(summation('employerMatch'))}</th>
+            <th>{getMoneyDisplay(summation('profitSharing'))}</th>
+            <th>{getMoneyDisplay(summation('catchUp'))}</th>
+            <th>{getMoneyDisplay(summation('total'))}</th>
           </tr>
         </tbody>
       </table>
       <dl>
-        <dt>Employer Tax Bracket</dt>
+        <dt>Employer Tax Bracket:</dt>
         <dd>{this.props.assumptions.employerTaxPercent}%</dd>
-        <dt>Gross Outlay by employer</dt>
+        <dt>Gross Outlay by employer:</dt>
         <dd>{getMoneyDisplay(grossOutlayByEmployer)}</dd>
-        <dt>Less Tax Savings*</dt>
-        <dd>{getMoneyDisplay(lessTaxSavings)}</dd>
-        <dt>Annual Administrative Fee**</dt>
-        <dd>{getMoneyDisplay(adminFee)}</dd>
-        <dt>Total Cost</dt>
+        <dt>Less Tax Savings:</dt>
+        <dd>{getMoneyDisplay(lessTaxSavings)}*</dd>
+        <dt>Annual Administrative Fee:</dt>
+        <dd>{getMoneyDisplay(adminFee)}**</dd>
+        <dt>Total Cost:</dt>
         <dd>{getMoneyDisplay(total)}</dd>
       </dl>
       <small>*Tax savings are for illustrative purposes only</small>

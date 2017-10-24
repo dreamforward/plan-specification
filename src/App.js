@@ -81,20 +81,32 @@ class App extends Component {
       />
     }
     return (
-      <div className='App'>
-        <Overview users={this.state.users} assumptions={this.state.assumptions} />
-        <Employees users={this.state.users} assumptions={this.state.assumptions} />
-        <Specification
-          users={this.state.users}
-          assumptions={this.state.assumptions}
-          title='No Match'
-          match={0}
-          profitSharing={0}
-          safeHarbor={0}
-        />
-        {employerMatch}
-        {profitSharing}
-        {safeHarbor}
+      <div className='main'>
+        <div className='page'>
+          <Overview users={this.state.users} assumptions={this.state.assumptions} />
+        </div>
+        <div className='page'>
+          <Employees users={this.state.users} assumptions={this.state.assumptions} />
+        </div>
+        <div className='page'>
+          <Specification
+            users={this.state.users}
+            assumptions={this.state.assumptions}
+            title='No Match'
+            match={0}
+            profitSharing={0}
+            safeHarbor={0}
+          />
+        </div>
+        <div className='page'>
+          {employerMatch}
+        </div>
+        <div className='page'>
+          {profitSharing}
+        </div>
+        <div className='page'>
+          {safeHarbor}
+        </div>
       </div>
     )
   }

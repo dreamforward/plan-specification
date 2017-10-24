@@ -1,0 +1,43 @@
+@media print {
+  .page {
+    page-break-before: always;
+  }
+}
+* {
+  font-family: 'roboto', sans-serif;
+}
+.main {
+  width: 800px;
+  margin: 0 auto;
+}
+dl {
+  font-size: 18px;
+}
+dt, dd{
+  display: inline-block;
+  vertical-align: top;
+}
+dt {
+  width: 250px;
+  font-weight: bold;
+  text-align: right;
+}
+dd {
+  margin: 0 0 10px 0;
+  padding-left: 10px;
+  width: 400px;
+}
+
+dd ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+small {
+  color: rgb(155,155,155);
+  size: 10px;
+}

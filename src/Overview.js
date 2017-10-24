@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getDeferral, getMoneyDisplay, getEmployerMatch, getProfitSharing } from './utilities'
+import moment from 'moment'
 
 class Overview extends Component {
   render () {
@@ -45,10 +46,12 @@ class Overview extends Component {
     }
 
     return <div>
+      <h1>Plan Specifications
+      </h1>
       <dl>
-        <dt>Effective Date (for model:</dt>
-        <dd>{this.props.assumptions.effectiveDate}</dd>
-        <dt>Normal Retirement Age</dt>
+        <dt>Effective Date (for model):</dt>
+        <dd>{moment(this.props.assumptions.effectiveDate, 'M/D/YYYY').format('MMM Do, YYYY')}</dd>
+        <dt>Normal Retirement Age:</dt>
         <dd>{this.props.assumptions.retirementAge}</dd>
         <dt>Assumptions:</dt>
         <dd>
@@ -63,9 +66,9 @@ class Overview extends Component {
             <li>Employee contributions are considered holistically vs Roth/traditional</li>
           </ul>
         </dd>
-        <dt>Business Entity Type</dt>
+        <dt>Business Entity Type:</dt>
         <dd>{this.props.assumptions.businessType}</dd>
-        <dt>Eligibility Requirements</dt>
+        <dt>Eligibility Requirements:</dt>
         <dd>
           <ul>
             <li>
@@ -84,7 +87,7 @@ class Overview extends Component {
             <li>Traditional 401k: {this.props.assumptions.traditionalVestingMonths || 'Immediate'}</li>
           </ul>
         </dd>
-        <dt>Deferral Contributions</dt>
+        <dt>Deferral Contributions:</dt>
         <dd>{getMoneyDisplay(deferralContributions)}</dd>
         <dt>Employer Contributions:</dt>
         <dd>
@@ -94,7 +97,7 @@ class Overview extends Component {
             {profitSharing}
           </ul>
         </dd>
-        <dt>Fee Against Plan Assets</dt>
+        <dt>Fee Against Plan Assets:</dt>
         <dd>{this.props.assumptions.feeAgainstPlanAssets}</dd>
       </dl>
     </div>

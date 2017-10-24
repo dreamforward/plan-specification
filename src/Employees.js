@@ -16,7 +16,7 @@ class Employees extends Component {
     }
     return <div>
       <h1>Employees</h1>
-      <table>
+      <table className='table table-hover table-bordered'>
         <thead>
           <tr>
             <th>Name</th>
