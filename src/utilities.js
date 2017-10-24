@@ -61,7 +61,7 @@ export const getProfitSharing = (user, {profitSharing, assumptions}) => {
   if (!getEligibility(user, assumptions)) {
     return 'Not eligible'
   }
-  if (user.ProfitSharing) {
+  if (profitSharing && user.ProfitSharing) {
     return user.ProfitSharing
   }
   return profitSharing
