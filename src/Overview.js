@@ -80,8 +80,8 @@ class Overview extends Component {
         <dt>Vesting Schedule</dt>
         <dd>
           <ul>
-            <li>Roth 401k: {this.props.assumptions.rothVestingMonths}</li>
-            <li>Traditional 401k: {this.props.assumptions.traditionalVestingMonths}</li>
+            <li>Roth 401k: {this.props.assumptions.rothVestingMonths || 'Immediate'}</li>
+            <li>Traditional 401k: {this.props.assumptions.traditionalVestingMonths || 'Immediate'}</li>
           </ul>
         </dd>
         <dt>Deferral Contributions</dt>

@@ -14,6 +14,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy-production": "REACT_APP_ENV=production npm run build && aws s3 sync ./build/ s3://plan-specification.dreamforward.io"
   }
 }
