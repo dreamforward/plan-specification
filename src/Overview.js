@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getDeferral, getMoneyDisplay, getEmployerMatch, getProfitSharing } from './utilities'
+import { getDeferral, getMoneyDisplay, getEmployerMatch, getProfitSharing, getEmployerContrib } from './utilities'
 import moment from 'moment'
 
 class Overview extends Component {
@@ -43,6 +43,21 @@ class Overview extends Component {
         return sum
       }, 0)
       profitSharing = <li>Profit Sharing: {getMoneyDisplay(employerProfitSharing)}</li>
+    }
+
+    let safeHarborMatch
+    if (this.props.assumptions.safeHarborPercent) {
+      const safeHarborFees = this.props.users.reduce((sum, user) => {
+        let profitShare = getEmployerContrib(user, {
+          safeHarbor: this.props.assumptions.safeHarborPercent,
+          assumptions: this.props.assumptions
+        })
+        if (typeof profitShare === 'number' && profitShare) {
+          sum += profitShare
+        }
+        return sum
+      }, 0)
+      safeHarborMatch = <li>Safe Harbor Sharing: {getMoneyDisplay(safeHarborFees)}</li>
     }
 
     return <div>
@@ -93,6 +108,7 @@ class Overview extends Component {
         <dd>
           <ul>
             <li>No Match: $0</li>
+            {safeHarborMatch}
             {standardMatch}
             {profitSharing}
           </ul>

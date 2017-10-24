@@ -79,7 +79,7 @@ class Specification extends Component {
               <td className='userName'>{user.name}</td>
               <td className='money'>{getMoneyDisplay(user.salary)}</td>
               <td className='money'>{getMoneyDisplay(user.deferral)}</td>
-              <td className='money'>{getMoneyDisplay(user.employerContrib)}</td>
+              <td className='money'>{getMoneyDisplay(user.employerContrib, this.props.safeHarbor ? 'missing' : undefined)}</td>
               <td className='money'>{getMoneyDisplay(user.employerMatch)}</td>
               <td className='money'>{getMoneyDisplay(user.profitSharing)}</td>
               <td className='money'>{getMoneyDisplay(user.catchUp)}</td>

@@ -1,12 +1,12 @@
 import moment from 'moment'
 import accounting from 'accounting'
 
-export const getMoneyDisplay = (amount) => {
+export const getMoneyDisplay = (amount, override) => {
   if (!amount) {
-    return '-'
+    return override || '-'
   }
   if (typeof amount !== 'number') {
-    return amount
+    return override || amount
   }
   return accounting.formatMoney(amount, '$', 0)
 }
