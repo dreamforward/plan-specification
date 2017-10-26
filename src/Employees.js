@@ -45,7 +45,7 @@ class Employees extends Component {
               <td>{formatDate(user.DOH)}</td>
               <td>{formatDate(getDateOfEligibility(user, {assumptions: this.props.assumptions}))}</td>
               <td className='money'>{getMoneyDisplay(user.Salary)}</td>
-              <td>{getEligibility(user, this.props.assumptions) ? 'Eligible' : 'NOT Eligible'}</td>
+              <td>{getEligibility(user, this.props.assumptions) ? 'Eligible' : 'Not Eligible'}</td>
             </tr>
           })}
         </tbody>
