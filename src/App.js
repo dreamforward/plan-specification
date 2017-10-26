@@ -6,6 +6,7 @@ import Employees from './Employees'
 import Specification from './Specification'
 import dfLogo from './images/df-horizontal.svg'
 import dfWatermark from './images/df-watermark.svg'
+import { normalizeNumber } from './utilities'
 
 class App extends Component {
   constructor () {
@@ -26,7 +27,16 @@ class App extends Component {
         skipEmptyLines: true
       })
       this.state = {
-        users: parsed.data,
+        users: parsed.data
+          .map((user) => {
+            ['Salary', 'ProfitSharing', 'CatchUp', 'Deferral']
+              .forEach((key) => {
+                if (user[key]) {
+                  user[key] = normalizeNumber(user[key])
+                }
+              })
+            return user
+          }),
         assumptions: planInfo.assumptions
       }
     } else {
@@ -36,6 +46,7 @@ class App extends Component {
     }
   }
   render () {
+    console.log(this.state.assumptions)
     if (!this.state.users.length) {
       let helper
       if (process.env.NODE_ENV !== 'production') {

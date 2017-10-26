@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getAge, getEligibility, getMoneyDisplay } from './utilities'
+import { getAge, getEligibility, getMoneyDisplay, getDateOfEligibility } from './utilities'
 import moment from 'moment'
 
 class Employees extends Component {
@@ -43,7 +43,7 @@ class Employees extends Component {
               <td>{formatDate(user.DOB)}</td>
               <td>{getAge(user)}</td>
               <td>{formatDate(user.DOH)}</td>
-              <td>{formatDate(user.DOE)}</td>
+              <td>{formatDate(getDateOfEligibility(user, {assumptions: this.props.assumptions}))}</td>
               <td className='money'>{getMoneyDisplay(user.Salary)}</td>
               <td>{getEligibility(user, this.props.assumptions) ? 'Eligible' : 'NOT Eligible'}</td>
             </tr>

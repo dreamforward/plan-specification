@@ -80,5 +80,21 @@ export const getEligibility = (user, assumptions) => {
   if (!doh.isValid()) {
     return true
   }
+  if (getAge(user) < assumptions.minimumAge) {
+    return false
+  }
+
   return doh.add(assumptions.minimumMonthsOfService, 'months').isBefore(moment())
+}
+
+export const getDateOfEligibility = (user, {assumptions}) => {
+  const doh = moment(user.DOH, 'M/D/YYYY')
+  if (!doh.isValid()) {
+    return user.DOH
+  }
+  return doh.add(assumptions.minimumMonthsOfService, 'months')
+}
+
+export const normalizeNumber = (number) => {
+  return accounting.unformat(number)
 }
