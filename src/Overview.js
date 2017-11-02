@@ -114,7 +114,7 @@ class Overview extends Component {
           </ul>
         </dd>
         <dt>Fee Against Plan Assets:</dt>
-        <dd>{this.props.assumptions.feeAgainstPlanAssets}</dd>
+        <dd>{this.props.assumptions.feeAgainstPlanAssets} bps</dd>
       </dl>
     </div>
   }
