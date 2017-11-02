@@ -6,6 +6,8 @@ import Employees from './Employees'
 import Specification from './Specification'
 import dfLogo from './images/df-horizontal.svg'
 import dfWatermark from './images/df-watermark.svg'
+import brookstoneLogo from './images/brookstone-horizontal.png'
+import brookstoneWatermark from './images/brookstone-watermark.png'
 import { normalizeNumber } from './utilities'
 
 class App extends Component {
@@ -71,6 +73,16 @@ class App extends Component {
         <div className='coverPage'>
           <img className='watermark' src={dfWatermark} alt='dream forward logo' />
           <img className='logo' src={dfLogo} alt='dream forward logo' />
+          <h1>401(k) Plan Design</h1>
+        </div>
+      </div>
+    }
+    if (this.state.assumptions.template === 'brookstone') {
+      watermark = <img className='watermark brookstone' src={brookstoneWatermark} alt='brookstone watermark' />
+      coverPage = <div className='page'>
+        <div className='coverPage'>
+          <img className='watermark brookstone' src={brookstoneWatermark} alt='brookstone logo' />
+          <img className='logo brookstone' src={brookstoneLogo} alt='brookstone logo' />
           <h1>401(k) Plan Design</h1>
         </div>
       </div>

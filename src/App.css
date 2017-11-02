@@ -70,9 +70,13 @@ small {
   position: fixed;
   top: -340px;
   left: -420px;
-  height: 1340px;
+  height: 100vh;
   opacity: 0.05;
   display: none;
+}
+.watermark.brookstone {
+  left: 0px;
+  top: 0px;
 }
 .main .page:first-child .watermark {
   display: block;
