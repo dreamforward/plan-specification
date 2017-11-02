@@ -67,24 +67,26 @@ export const getProfitSharing = (user, {profitSharing, assumptions}) => {
   return profitSharing
 }
 
-export const getAge = (user) => {
+export const getAge = (user, fromDate) => {
+  fromDate = fromDate || moment()
   const age = moment(user.DOB, 'M/D/YYYY')
   if (!age.isValid()) {
     return 'N/A'
   }
-  return moment().diff(age, 'years')
+  return moment(fromDate).diff(age, 'years')
 }
 
 export const getEligibility = (user, assumptions) => {
+  const effectiveDate = moment(assumptions.effectiveDate, 'MM/DD/YYYY')
   const doh = moment(user.DOH, 'M/D/YYYY')
   if (!doh.isValid()) {
     return true
   }
-  if (getAge(user) < assumptions.minimumAge) {
+  if (getAge(user, effectiveDate) < assumptions.minimumAge) {
     return false
   }
 
-  return doh.add(assumptions.minimumMonthsOfService, 'months').isBefore(moment())
+  return doh.add(assumptions.minimumMonthsOfService, 'months').isBefore(effectiveDate)
 }
 
 export const getDateOfEligibility = (user, {assumptions}) => {
