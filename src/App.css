@@ -82,7 +82,7 @@ small {
   display: block;
 }
 @page {
-  margin: 0;
+  margin: 5mm;
 }
 @media print {
   .coverPage .logo{
@@ -103,5 +103,8 @@ small {
   }
   thead {
     display: table-row-group;
+  }
+  dl {
+    page-break-inside: avoid;
   }
 }
