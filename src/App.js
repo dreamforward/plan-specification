@@ -13,7 +13,11 @@ import { normalizeNumber } from './utilities'
 class App extends Component {
   constructor () {
     super()
-    const searchParams = window.location.search
+    let search = window.location.search
+    if (search.length === 0) {
+      search = window.location.hash
+    }
+    const searchParams = search
       .substring(1)
       .split('&')
       .reduce((input, str) => {
