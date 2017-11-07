@@ -77,6 +77,9 @@ class Overview extends Component {
             <li>
               Employer match (for relevant plans): {this.props.assumptions.employerMatch}%
             </li>
+            <li>
+              Profit Sharing (for relevant plans): {getMoneyDisplay(this.props.assumptions.profitSharing)}
+            </li>
             <li>Owners max out contributions</li>
             <li>Employee contributions are considered holistically vs Roth/traditional</li>
           </ul>
