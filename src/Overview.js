@@ -72,10 +72,10 @@ class Overview extends Component {
         <dd>
           <ul>
             <li>
-              Employee 401(k) contribution rates: {this.props.assumptions.employeeDeferral}%
+              Employee 401(k) contribution rates: {this.props.assumptions.employeeDeferral * 100}%
             </li>
             <li>
-              Employer match (for relevant plans): {this.props.assumptions.employerMatch}%
+              Employer match (for relevant plans): {this.props.assumptions.employerMatch * 100}%
             </li>
             <li>
               Profit Sharing (for relevant plans): {getMoneyDisplay(this.props.assumptions.profitSharing)}
