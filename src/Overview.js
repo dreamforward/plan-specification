@@ -46,6 +46,7 @@ class Overview extends Component {
     }
 
     let safeHarborMatch
+    let safeHarborAssumption
     if (this.props.assumptions.safeHarborPercent) {
       const safeHarborFees = this.props.users.reduce((sum, user) => {
         let profitShare = getEmployerContrib(user, {
@@ -57,7 +58,8 @@ class Overview extends Component {
         }
         return sum
       }, 0)
-      safeHarborMatch = <li>Safe Harbor Sharing: {getMoneyDisplay(safeHarborFees)}</li>
+      safeHarborMatch = <li>Safe Harbor: {getMoneyDisplay(safeHarborFees)}</li>
+      safeHarborAssumption = <li>Safe Harbor Match: {this.props.assumptions.safeHarborPercent * 100}%</li>
     }
 
     return <div>
@@ -80,8 +82,8 @@ class Overview extends Component {
             <li>
               Profit Sharing (for relevant plans): {getMoneyDisplay(this.props.assumptions.profitSharing)}
             </li>
+            {safeHarborAssumption}
             <li>Owners max out contributions</li>
-            <li>Employee contributions are considered holistically vs Roth/traditional</li>
           </ul>
         </dd>
         <dt>Business Entity Type:</dt>
